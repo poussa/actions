@@ -1,2 +1,2 @@
 # actions
-GH actions testbead
+GH actions testbed
