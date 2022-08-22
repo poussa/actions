@@ -37,13 +37,19 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4.0.1
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} 
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: build
+        run: make docker-build
+
+      - name: push
+        run: make docker-push
  
-      - name: Build and push Docker images
-        uses: docker/build-push-action@v3.1.1
-        with:
-          build-args: env.BUILD_ARGS
-          context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+#      - name: Build and push Docker images
+#        uses: docker/build-push-action@v3.1.1
+#        with:
+#          build-args: env.BUILD_ARGS
+#          context: .
+#          push: true
+#          tags: ${{ steps.meta.outputs.tags }}
+#          labels: ${{ steps.meta.outputs.labels }}
