@@ -18,12 +18,22 @@ jobs:
     steps:
 
       - name: Chekcout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3.3.0
         with:
           go-version: 1.17
+          cache: true
+
+      - name: Setup signing key
+        run: |
+          mkdir enclave-config
+          echo "$PRIVATE_KEY_PEM" > enclave-config/privatekey.pem
+          sha256sum enclave-config/privatekey.pem
+        shell: bash
+        env:
+          PRIVATE_KEY_PEM: ${{secrets.PRIVATE_KEY_PEM}}
 
       - name: Login to the container registry
         if: ${{ github.event_name == 'push' }}
@@ -32,24 +42,8 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v4.0.1
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
       - name: build
         run: make docker-build
-
       - name: push
         run: make docker-push
  
-#      - name: Build and push Docker images
-#        uses: docker/build-push-action@v3.1.1
-#        with:
-#          build-args: env.BUILD_ARGS
-#          context: .
-#          push: true
-#          tags: ${{ steps.meta.outputs.tags }}
-#          labels: ${{ steps.meta.outputs.labels }}
