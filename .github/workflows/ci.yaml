@@ -29,7 +29,7 @@ jobs:
       - name: Setup signing key
         run: |
           mkdir enclave-config
-          'echo "$PRIVATE_KEY_PEM" > enclave-config/privatekey.pem'
+          echo "$PRIVATE_KEY_PEM" > enclave-config/privatekey.pem
           sha256sum enclave-config/privatekey.pem
         shell: bash
         env:
