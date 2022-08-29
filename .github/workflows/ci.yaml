@@ -31,11 +31,11 @@ jobs:
           mkdir enclave-config
           echo "$PRIVATE_KEY_PEM" > enclave-config/privatekey.pem
           sha256sum enclave-config/privatekey.pem
-          echo ${{secrets.PRIVATE_KEY_PEM}} > enclave-config/privatekey.pem
+          echo ${{ secrets.PRIVATE_KEY_PEM }} > enclave-config/privatekey.pem
           sha256sum enclave-config/privatekey.pem
         shell: bash
         env:
-          PRIVATE_KEY_PEM: ${{secrets.PRIVATE_KEY_PEM}}
+          PRIVATE_KEY_PEM: ${{ secrets.PRIVATE_KEY_PEM }}
 
       - name: Login to the container registry
         if: ${{ github.event_name == 'push' }}
