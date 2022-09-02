@@ -20,6 +20,13 @@ jobs:
       url: https://github.com
     steps:
 
+      - name: Setup env
+        run: |
+          if [[ $GITHUB_EVENT_NAME == 'pull_request' ]]; then
+            echo "IMG_TAG=latest" >> "$GITHUB_ENV"
+          else
+            echo "IMG_TAG=$GITHUB_REF_NAME" >> "$GITHUB_ENV"
+
       - name: Chekcout code
         uses: actions/checkout@v3
 
@@ -47,9 +54,9 @@ jobs:
       - name: build
         run: make docker-build
         env:
-          IMG_TAG: ${{ github.ref_name }}
+          IMG_TAG: ${{ github.img_tag }}
       - name: push
         run: make docker-push
         env:
-          IMG_TAG: ${{ github.ref_name }}
+          IMG_TAG: ${{ github.img_tag }}
  
