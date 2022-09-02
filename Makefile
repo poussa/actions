@@ -1,8 +1,9 @@
 ENGINE ?= docker
 
-REGSITRY ?= ghcr.io/poussa
-IMAGE_NAME ?= actions
-IMG ?= $(REGSITRY)/$(IMAGE_NAME)
+REGSITRY ?= ghcr.io
+IMAGE_NAME ?= poussa/actions
+IMG_TAG ?= latest
+IMG ?= $(REGSITRY)/$(IMAGE_NAME):$(IMG_TAG)
 
 DOCKER_BUILD_DEPS ?= enclave-config/privatekey.pem
 
