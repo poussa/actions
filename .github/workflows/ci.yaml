@@ -3,6 +3,7 @@ name: Go
 on:
   push:
     branches: [ main, 'release-*' ]
+    tags: [ 'v*' ]
   pull_request:
     branches: [ main, 'release-*' ]
 
@@ -45,6 +46,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: build
         run: make docker-build
+        env:
+          IMG_TAG: ${{ github.ref_name }}
       - name: push
         run: make docker-push
  
