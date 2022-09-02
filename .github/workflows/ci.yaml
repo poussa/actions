@@ -50,4 +50,6 @@ jobs:
           IMG_TAG: ${{ github.ref_name }}
       - name: push
         run: make docker-push
+        env:
+          IMG_TAG: ${{ github.ref_name }}
  
