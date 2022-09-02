@@ -26,6 +26,7 @@ jobs:
             echo "IMG_TAG=latest" >> "$GITHUB_ENV"
           else
             echo "IMG_TAG=$GITHUB_REF_NAME" >> "$GITHUB_ENV"
+          fi
 
       - name: Chekcout code
         uses: actions/checkout@v3
