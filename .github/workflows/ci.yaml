@@ -55,9 +55,9 @@ jobs:
       - name: build
         run: make docker-build
         env:
-          IMG_TAG: ${{ github.img_tag }}
+          IMG_TAG: ${{ env.IMG_TAG }}
       - name: push
         run: make docker-push
         env:
-          IMG_TAG: ${{ github.img_tag }}
+          IMG_TAG: ${{ env.IMG_TAG }}
  
