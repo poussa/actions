@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  chart:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2022-09-07T08:19:04.519571312Z"
+    description: A Helm chart for Kubernetes
+    digest: 3a2c4480d0263081af9de193d73d67e838f29411a418dc8ee8514665e3ca892a
+    name: chart
+    type: application
+    urls:
+    - https://github.com/poussa/actions/releases/download/chart-0.1.1/chart-0.1.1.tgz
+    version: 0.1.1
+generated: "2022-09-07T08:19:04.519577112Z"
