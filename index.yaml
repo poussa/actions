@@ -3,6 +3,16 @@ entries:
   chart:
   - apiVersion: v2
     appVersion: latest
+    created: "2022-09-08T10:19:23.790625835Z"
+    description: A Helm chart for Kubernetes
+    digest: 7a5a77548126d13a601501fa995d976c85fffbfdc8c419478c60a25fb4e8ee11
+    name: chart
+    type: application
+    urls:
+    - https://github.com/poussa/actions/releases/download/chart-0.1.2/chart-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: latest
     created: "2022-09-07T08:19:04.519571312Z"
     description: A Helm chart for Kubernetes
     digest: 3a2c4480d0263081af9de193d73d67e838f29411a418dc8ee8514665e3ca892a
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/poussa/actions/releases/download/chart-0.1.1/chart-0.1.1.tgz
     version: 0.1.1
-generated: "2022-09-07T08:19:04.519577112Z"
+generated: "2022-09-08T10:19:23.790642135Z"
